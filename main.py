@@ -2,6 +2,7 @@ import appearance
 import trackpad
 import dock
 import package
+from utils import text_bold
 
 if package.init():
     package.set_packages([
@@ -12,9 +13,10 @@ if package.init():
     package.set_casks([
         "iterm2",
         "firefox@developer-edition",
-        "visual-studio-code"
+        "visual-studio-code",
     ])
 
+print(text_bold("Applying settings"))
 appearance.set_dark_mode(True)
 appearance.set_accent_color("blue")
 
