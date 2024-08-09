@@ -1,7 +1,9 @@
 import os
 import subprocess
 import logger
+from utils import text_bold
 from typing import List
+
 
 def init() -> bool:
     try:
@@ -24,36 +26,57 @@ def init() -> bool:
     
     return True
 
+
 def set_packages(packages: List[str]):
+    print(text_bold("Verifying packages"))
     for package in packages:
         install_package(package)
+    print()
+
 
 def set_casks(casks: List[str]):
+    print(text_bold("Verifying casks"))
     for cask in casks:
         install_cask(cask)
+    print()
 
 def install_package(name: str):
+    # check if package exists
+    res = subprocess.run(["brew", "info", name], capture_output=True, text=True)
+    if res.stdout == "":
+        print(f"⚠️ Package {text_bold(name)} doesn't exist")
+        return
+
+    # check if package is installed
     res = subprocess.run(["brew", "list", "--formula"], capture_output=True, text=True)
     entries = res.stdout.split("\n")
-
     for entry in entries:
         if entry == name:
-            logger.log_info(f"Package {name} already installed")
+            print(f"✅ Package {text_bold(name)} already installed")
             return
 
-    logger.log_info(f"Installing package {name}")
+    # install package
+    print(f"Installing package {text_bold(name)}")
     subprocess.run(["brew", "install", name], capture_output=True, text=True)
-    logger.log_info(f"Package {name} installed")
+    print(f"✅ Package {text_bold(name)} installed")
+
 
 def install_cask(name: str):
+    # check if cask exists
+    res = subprocess.run(["brew", "info", "--cask", name], capture_output=True, text=True)
+    if res.stdout == "":
+        print(f"⚠️ Cask {text_bold(name)} doesn't exist")
+        return
+    
+    # check if cask is installed
     res = subprocess.run(["brew", "list", "--cask"], capture_output=True, text=True)
     entries = res.stdout.split("\n")
-
     for entry in entries:
         if entry == name:
-            logger.log_info(f"Cask {name} already installed")
+            print(f"✅ Cask {text_bold(name)} already installed")
             return
 
-    logger.log_info(f"Installing cask {name}")
+    # install cask
+    print(f"Installing cask {text_bold(name)}")
     subprocess.run(["brew", "install", "--cask", name], capture_output=True, text=True)
-    logger.log_info(f"Cask {name} installed")
+    print(f"✅ Cask {text_bold(name)} installed")
