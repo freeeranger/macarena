@@ -12,3 +12,8 @@ __pycache__/
 !.vscode/*.code-snippets
 .history/
 *.vsix
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride

@@ -10,6 +10,8 @@ def set_dotfiles(dotfiles: List[Tuple[str, str]]):
     for dotfile in dotfiles:
         add_dotfile(dotfile[0], dotfile[1])
 
+    print()
+
 def add_dotfile(name: str, final_dest: str):
     source_file = f"./config/dotfiles/{name}"
 
@@ -20,5 +22,4 @@ def add_dotfile(name: str, final_dest: str):
     dest_file = os.path.expanduser(final_dest)
 
     shutil.copy(source_file, dest_file)
-
-    print(f"✅ Added dotfile {text_bold(name)}")
+    print(f"✅ Synced dotfile {text_bold(name)}")

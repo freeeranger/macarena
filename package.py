@@ -26,6 +26,9 @@ def init() -> bool:
     
     return True
 
+def set_taps(taps: List[str]):
+    for tap in taps:
+        os.system(f"brew tap {tap}")
 
 def set_packages(packages: List[str]):
     print(text_bold("Verifying packages"))
