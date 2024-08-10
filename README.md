@@ -11,7 +11,7 @@ Run this command:
 - [x] Set items in dock + other dock settings
 - [ ] Set secondary click for touchpad + other touchpad settings **(WIP)**
 - [ ] Appearance settings **(WIP)**
-- [ ] Set wallpaper
+- [x] Set wallpaper
 - [ ] Manage packages **(WIP)**
 - [ ] A config file where everything is configured, as well as proper utils for rebuilding, rollbacking etc
 - [ ] A utility to sync the config file with the system
@@ -20,7 +20,7 @@ Run this command:
 - [ ] Set finder show all files
 - [ ] Set finder show breadcrumb
 - [ ] An installation script (install git, brew, python3, macarena, etc)
-- [ ] Handle dotfiles
+- [ ] Handle dotfiles **(WIP)**
 - [ ] Save x iterations of config file for rollback purposes
 - [ ] Run custom commands
 - [ ] A way to install applications outside of homebrew (eg vesktop etc). Alternatively provide post-installation instructions somehow
