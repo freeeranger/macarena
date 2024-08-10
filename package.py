@@ -29,54 +29,57 @@ def init() -> bool:
 
 def set_packages(packages: List[str]):
     print(text_bold("Verifying packages"))
+
+    installed_packages = subprocess.run(["brew", "list", "--formula"], capture_output=True, text=True).stdout.split("\n")
+
     for package in packages:
+        if package in installed_packages:
+            print(f"✅ Package {text_bold(package)} already installed")
+            continue
+        
+        if subprocess.run(["brew", "info", package], capture_output=True, text=True).stdout == "":
+            print(f"⚠️ Package {text_bold(package)} doesn't exist")
+            continue
+
         install_package(package)
+
     print()
 
 
 def set_casks(casks: List[str]):
     print(text_bold("Verifying casks"))
+
+    installed_casks = subprocess.run(["brew", "list", "--cask"], capture_output=True, text=True).stdout.split("\n")
+
     for cask in casks:
+        if cask in installed_casks:
+            print(f"✅ Cask {text_bold(cask)} already installed")
+            continue
+            
+        if subprocess.run(["brew", "info", "--cask", cask], capture_output=True, text=True).stdout == "":
+            print(f"⚠️ Cask {text_bold(cask)} doesn't exist")
+            continue
+
         install_cask(cask)
+
     print()
 
+
 def install_package(name: str):
-    # check if package exists
-    res = subprocess.run(["brew", "info", name], capture_output=True, text=True)
-    if res.stdout == "":
-        print(f"⚠️ Package {text_bold(name)} doesn't exist")
-        return
-
-    # check if package is installed
-    res = subprocess.run(["brew", "list", "--formula"], capture_output=True, text=True)
-    entries = res.stdout.split("\n")
-    for entry in entries:
-        if entry == name:
-            print(f"✅ Package {text_bold(name)} already installed")
-            return
-
-    # install package
-    print(f"Installing package {text_bold(name)}")
+    first_msg = f"Installing package {text_bold(name)}..."
+    print(first_msg)
+    
     subprocess.run(["brew", "install", name], capture_output=True, text=True)
-    print(f"✅ Package {text_bold(name)} installed")
+
+    second_msg = f"✅ Package {text_bold(name)} installed"
+    print("\033[F" + second_msg + " " * max(len(first_msg) - len(second_msg), 0))
 
 
 def install_cask(name: str):
-    # check if cask exists
-    res = subprocess.run(["brew", "info", "--cask", name], capture_output=True, text=True)
-    if res.stdout == "":
-        print(f"⚠️ Cask {text_bold(name)} doesn't exist")
-        return
+    first_msg = f"Installing cask {text_bold(name)}..."
+    print(first_msg)
     
-    # check if cask is installed
-    res = subprocess.run(["brew", "list", "--cask"], capture_output=True, text=True)
-    entries = res.stdout.split("\n")
-    for entry in entries:
-        if entry == name:
-            print(f"✅ Cask {text_bold(name)} already installed")
-            return
-
-    # install cask
-    print(f"Installing cask {text_bold(name)}")
     subprocess.run(["brew", "install", "--cask", name], capture_output=True, text=True)
-    print(f"✅ Cask {text_bold(name)} installed")
+
+    second_msg = f"✅ Cask {text_bold(name)} installed"
+    print("\033[F" + second_msg + " " * max(len(first_msg) - len(second_msg), 0))
