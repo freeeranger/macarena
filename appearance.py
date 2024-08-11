@@ -2,7 +2,7 @@ import os
 import utils
 import logger
 
-def set_dark_mode(status: bool):
+def set_dark_mode(status):
     command = f"""
     tell application "System Events"
         set dark mode of appearance preferences to {"true" if status else "false"}
@@ -10,7 +10,7 @@ def set_dark_mode(status: bool):
     """
     utils.execute_osascript(command)
 
-def set_accent_color(color: str):
+def set_accent_color(color):
     color_map = {
         "red": 0,
         "orange": 1,
@@ -24,7 +24,7 @@ def set_accent_color(color: str):
     os.system(f"defaults write -g AppleAccentColor -int {str(color_map[color])}")
     os.system("killall Dock")
 
-def set_wallpaper(path: str):
+def set_wallpaper(path):
     # TODO somehow fetch the wallpaper as well and store it in correct location, maybe a wallpaper folder as part of the config?
     path = os.path.expanduser(path)
 

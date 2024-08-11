@@ -1,49 +1,48 @@
 import os
-from typing import List
 import logger
 from docklib import Dock
 
-def set_tilesize(size: int):
+def set_tilesize(size):
     dock = Dock()
     dock.tilesize = size # type: ignore
     dock.save()
 
-def set_largesize(size: int):
+def set_largesize(size):
     dock = Dock()
     dock.largesize = size #type: ignore
     dock.save()
 
-def set_orientation(orientation: str):
+def set_orientation(orientation):
     dock = Dock()
     dock.orientation = orientation #type: ignore
     dock.save()
 
-def set_magnification(status: bool):
+def set_magnification(status):
     dock = Dock()
     dock.magnification = status #type: ignore
     dock.save()
 
-def set_autohide(status: bool):
+def set_autohide(status):
     dock = Dock()
     dock.autohide = status #type: ignore
     dock.save()
 
-def set_show_recents(status: bool):
+def set_show_recents(status):
     dock = Dock()
     dock.show_recents = status #type: ignore
     dock.save()
 
-def set_show_process_indicators(status: bool):
+def set_show_process_indicators(status):
     dock = Dock()
     dock.show_process_indicators = status #type: ignore
     dock.save()
 
-def set_show_progress_indicators(status: bool):
+def set_show_progress_indicators(status):
     dock = Dock()
     dock.show_progress_indicators = status #type: ignore
     dock.save()
 
-def set_persistent_apps(apps: List[str]):
+def set_persistent_apps(apps):
     dock = Dock()
     dock.items["persistent-apps"] = []
 
@@ -57,7 +56,7 @@ def set_persistent_apps(apps: List[str]):
 
     dock.save()
 
-def set_persistent_others(others: List[str]):
+def set_persistent_others(others):
     dock = Dock()
     dock.items["persistent-others"] = []
 

@@ -2,7 +2,6 @@ import os
 import subprocess
 import logger
 from utils import text_bold
-from typing import List
 
 
 def init() -> bool:
@@ -11,7 +10,7 @@ def init() -> bool:
     except:
         # Install homebrew
         logger.log_info("Homebrew not found, installing...")
-        #os.system('/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"')
+        os.system('/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"')
         logger.log_info("Homebrew installed")
 
         # Add brew to path
@@ -26,11 +25,13 @@ def init() -> bool:
     
     return True
 
-def set_taps(taps: List[str]):
+
+def set_taps(taps):
     for tap in taps:
         os.system(f"brew tap {tap}")
 
-def set_packages(packages: List[str]):
+
+def set_packages(packages):
     print(text_bold("Verifying packages"))
 
     installed_packages = subprocess.run(["brew", "list", "--formula"], capture_output=True, text=True).stdout.split("\n")
@@ -49,7 +50,7 @@ def set_packages(packages: List[str]):
     print()
 
 
-def set_casks(casks: List[str]):
+def set_casks(casks):
     print(text_bold("Verifying casks"))
 
     installed_casks = subprocess.run(["brew", "list", "--cask"], capture_output=True, text=True).stdout.split("\n")
@@ -68,7 +69,7 @@ def set_casks(casks: List[str]):
     print()
 
 
-def install_package(name: str):
+def install_package(name):
     first_msg = f"Installing package {text_bold(name)}..."
     print(first_msg)
     
@@ -78,7 +79,7 @@ def install_package(name: str):
     print("\033[F" + second_msg + " " * max(len(first_msg) - len(second_msg), 0))
 
 
-def install_cask(name: str):
+def install_cask(name):
     first_msg = f"Installing cask {text_bold(name)}..."
     print(first_msg)
     

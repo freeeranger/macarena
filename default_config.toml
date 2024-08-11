@@ -1,0 +1,38 @@
+[package]
+taps = []
+packages = []
+casks = []
+
+[appearance]
+dark_mode = false
+accent_color = "blue"
+wallpaper = ""
+
+[dock]
+tilesize = 64
+largesize = 64
+magnification = false
+autohide = false
+persistent_apps = []
+persistent_others = []
+show_recents = true
+show_progress_indicators = true
+show_process_indicators = true
+orientation = "bottom"
+
+[trackpad]
+natural_scroll = true
+secondary_click_mode = "bottom_right" # TODO change this to its actual default idk what it is tho
+
+[dotfiles]
+dotfiles = []
+
+[other]
+create_directories = []
+oh_my_zsh = false
+
+[finder]
+breadcrumb = false
+show_hidden_files = false
+show_item_info = false
+preferred_view_size = "list"

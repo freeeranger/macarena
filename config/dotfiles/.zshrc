@@ -1,5 +1,11 @@
-########## ALIASES ##########
+########## OH MY ZSH ##########
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="robbyrussell"
+plugins=(git)
+source $ZSH/oh-my-zsh.sh
 
+
+########## ALIASES ##########
 # ls
 alias ls="eza"
 alias ll="eza -l"
@@ -26,11 +32,6 @@ alias gc="git checkout"
 # clipboard management
 alias clipb="pbcopy"
 
+
 ########## ZOXIDE ##########
 eval "$(zoxide init zsh)"
-
-########## OH MY ZSH ##########
-export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="robbyrussell"
-plugins=(git)
-source $ZSH/oh-my-zsh.sh

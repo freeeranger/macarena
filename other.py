@@ -1,8 +1,7 @@
 import os
-from typing import List
 from utils import text_bold
 
-def create_directories(directories: List[str]):
+def create_directories(directories):
     print(text_bold("Creating directories"))
     for dir in directories:
         dir_expanded = os.path.expanduser(dir)
@@ -14,7 +13,8 @@ def create_directories(directories: List[str]):
         print(f"✅ Created directory {dir}")
     print()
 
-def set_oh_my_zsh(status: bool):
+
+def set_oh_my_zsh(status):
     if os.path.exists(os.path.expanduser("~/.oh-my-zsh")):
         if not status:
             os.system("uninstall_oh_my_zsh")

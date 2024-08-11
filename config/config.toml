@@ -1,0 +1,66 @@
+[package]
+taps = [
+    "heroku/brew"
+]
+packages = [
+    "git",
+    "gitui",
+    "neovim",
+    "bat",
+    "jq",
+    "eza",
+    "scc",
+    "zoxide",
+    "heroku",
+    "xclip"
+]
+casks = [
+    "iterm2",
+    "kitty",
+    "firefox@developer-edition",
+    "visual-studio-code",
+    "steam",
+    "font-jetbrains-mono-nerd-font",
+    "chatgpt",
+    "spotify"
+]
+
+[appearance]
+dark_mode = true
+wallpaper = "~/Downloads/wallhaven.png"
+
+[dock]
+tilesize = 48
+magnification = true
+autohide = true
+persistent_apps = [
+    "/Applications/Firefox Developer Edition.app",
+    "/Applications/Discord.app",
+    "/Applications/Kitty.app",
+    "/Applications/Visual Studio Code.app",
+    "/Applications/Spotify.app"
+]
+show_recents = false
+
+[trackpad]
+natural_scroll = false
+secondary_click_mode = "bottom_right"
+
+[dotfiles]
+dotfiles = [
+    { source = ".zshrc", target = "~/.zshrc" },
+    { source = "kitty.conf", target = "~/.config/kitty/kitty.conf" },
+    { source = "bat", target = "~/.config/bat" },
+]
+
+[other]
+create_directories = [
+    "~/dev",
+    "~/dev/games",
+    "~/dev/other"
+]
+oh_my_zsh = true
+
+[finder]
+breadcrumb = true
+show_item_info = true
