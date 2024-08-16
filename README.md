@@ -1,5 +1,5 @@
 # Macarena
-A WIP simple declarative configuration system for MacOS
+A WIP simple setup system for MacOS
 
 ## Installation
 Run this command: 
@@ -12,16 +12,14 @@ Run this command:
 - [ ] Set secondary click for touchpad + other touchpad settings **(WIP)**
 - [ ] Appearance settings **(WIP)**
 - [x] Set wallpaper
-- [ ] Manage packages **(WIP)**
-- [ ] A config file where everything is configured, as well as proper utils for rebuilding, rollbacking etc
-- [ ] A utility to sync the config file with the system
+- [x] Manage packages
+- [x] A config file where everything is configured
 - [ ] Set touch id sudo authentication **(WIP)**
-- [ ] Set finder file extension change warning
-- [ ] Set finder show all files
-- [ ] Set finder show breadcrumb
+- [x] Set finder file extension change warning
+- [x] Set finder show all files
+- [x] Set finder show breadcrumb
 - [ ] An installation script (install git, brew, python3, macarena, etc)
 - [ ] Handle dotfiles **(WIP)**
-- [ ] Save x iterations of config file for rollback purposes
 - [ ] Run custom commands
 - [ ] A way to install applications outside of homebrew (eg vesktop etc). Alternatively provide post-installation instructions somehow
 - [ ] Document every setting
